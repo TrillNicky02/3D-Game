@@ -1,9 +1,13 @@
-[gd_scene load_steps=49 format=3 uid="uid://dp053g5ddl4rw"]
+[gd_scene load_steps=18 format=3 uid="uid://dp053g5ddl4rw"]
 
+[ext_resource type="Script" path="res://Maze/game.gd" id="1_jsx58"]
 [ext_resource type="Script" path="res://Maze/Maze.gd" id="1_ujvrg"]
-[ext_resource type="Script" path="res://Player/Player.gd" id="2_el1om"]
-[ext_resource type="ArrayMesh" uid="uid://eoxko2o67mri" path="res://Assets/uziLong.obj" id="3_q3iek"]
-[ext_resource type="Script" path="res://UI/Menu.gd" id="4_hj6gj"]
+[ext_resource type="PackedScene" uid="uid://drljno7f007ga" path="res://Key/key.tscn" id="2_qyc6x"]
+[ext_resource type="Script" path="res://Exit/Exit.gd" id="3_pmouw"]
+[ext_resource type="PackedScene" uid="uid://b4jwrtskvnuon" path="res://Player/Player.tscn" id="4_kx8hf"]
+[ext_resource type="PackedScene" uid="uid://bmkq65lnd4ra0" path="res://Enemy/Enemy.tscn" id="7_4rawb"]
+[ext_resource type="PackedScene" uid="uid://be00dasqp8p32" path="res://UI/Menu.tscn" id="7_qmnlk"]
+[ext_resource type="AudioStream" uid="uid://b1a2euuy1m1mj" path="res://Assets/641823__szegvari__drumjam-conga-solo-sample-ethno-music-drums-119bpm_2022-07-15_191240.mp3" id="8_p8r7o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ygo0j"]
 
@@ -14,249 +18,106 @@ sky_material = SubResource("ProceduralSkyMaterial_ygo0j")
 background_mode = 2
 sky = SubResource("Sky_uwr43")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otj25"]
-albedo_color = Color(0.392157, 0.392157, 1, 0.470588)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5ldd"]
+albedo_color = Color(0.266667, 0.266667, 0.266667, 1)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_buh27"]
-material = SubResource("StandardMaterial3D_otj25")
+[sub_resource type="PlaneMesh" id="PlaneMesh_cx8bm"]
+material = SubResource("StandardMaterial3D_k5ldd")
+size = Vector2(100, 50)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjnie"]
-albedo_color = Color(0.933333, 0.509804, 0.933333, 1)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_13jea"]
+points = PackedVector3Array(-50, 0, -25, -50, 0, 25, 50, 0, -25, 50, 0, 25)
 
-[sub_resource type="PrismMesh" id="PrismMesh_i3rnm"]
-material = SubResource("StandardMaterial3D_pjnie")
+[sub_resource type="SphereShape3D" id="SphereShape3D_d2kbn"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712aa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcy0x"]
+albedo_color = Color(1, 1, 0.0784314, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1hp04"]
-size = Vector3(0.8, 0.2, 0.8)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oatpl"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vv0g"]
-albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i106j"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s3bl"]
-albedo_color = Color(0.368627, 0.368627, 0.368627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x70gg"]
-albedo_color = Color(0.407843, 0.407843, 0.407843, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbrov"]
-albedo_color = Color(0.0392157, 0.215686, 0.215686, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcjr6"]
-albedo_color = Color(0.156863, 0.333333, 0.141176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8mbl"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64gv7"]
-albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6m2m"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7oejl"]
-albedo_color = Color(0.368627, 0.368627, 0.368627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ss8v6"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6h0r"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aa15j"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0i41"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1sygi"]
-albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4nq2"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ufjq"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ejbxh"]
-albedo_color = Color(0.368627, 0.368627, 0.368627, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7t44"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7khit"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_878gj"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x4rpx"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lt7f"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdxy7"]
-albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43avk"]
-albedo_color = Color(0.156863, 0.333333, 0.141176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfd0b"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3u84m"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgnd6"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6jp6a"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm8ds"]
-albedo_color = Color(0.156863, 0.333333, 0.141176, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_om6v4"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2skfm"]
-albedo_color = Color(0.133333, 0.133333, 0.133333, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msiju"]
-albedo_color = Color(0.290196, 0.290196, 0.290196, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6r7g"]
-albedo_color = Color(0.0392157, 0.215686, 0.215686, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qk8j3"]
+albedo_color = Color(1, 0.176471, 1, 1)
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_jsx58")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8k432")
 
 [node name="Maze" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -2, -0.5)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.5, -2, -0.5)
 script = ExtResource("1_ujvrg")
+metadata/_edit_group_ = true
 
-[node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1, -0.25)
-script = ExtResource("2_el1om")
+[node name="Ground" type="StaticBody3D" parent="Maze"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_buh27")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Maze/Ground"]
+mesh = SubResource("PlaneMesh_cx8bm")
 
-[node name="Nose" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 1.3, -0.5)
-mesh = SubResource("PrismMesh_i3rnm")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Ground"]
+shape = SubResource("ConvexPolygonShape3D_13jea")
 
-[node name="Body" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_712aa")
+[node name="key" parent="Maze" instance=ExtResource("2_qyc6x")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 32, 0.5, 0.3)
 
-[node name="Feet" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-shape = SubResource("BoxShape3D_1hp04")
+[node name="Exit" type="Area3D" parent="Maze"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0.4, 0)
+script = ExtResource("3_pmouw")
+metadata/_edit_group_ = true
 
-[node name="Pivot" type="Marker3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+[node name="Light" type="OmniLight3D" parent="Maze/Exit"]
+light_color = Color(1, 0, 0, 1)
+light_energy = 10.0
+omni_range = 3.0
+omni_attenuation = 2.0
 
-[node name="Camera" type="Camera3D" parent="Player/Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.3)
-current = true
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Maze/Exit"]
+shape = SubResource("SphereShape3D_d2kbn")
 
-[node name="Overhead" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
-current = true
+[node name="CSGBox3D" type="CSGBox3D" parent="Maze"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 32, 1, 0.1)
+use_collision = true
+size = Vector3(4, 6, 4)
+material = SubResource("StandardMaterial3D_fcy0x")
 
-[node name="Gun" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(-9, 0, -7.86805e-07, 0, 9, 0, 7.86805e-07, 0, -9, 0.3, 1, -0.75)
-mesh = ExtResource("3_q3iek")
-surface_material_override/0 = SubResource("StandardMaterial3D_oatpl")
-surface_material_override/1 = SubResource("StandardMaterial3D_3vv0g")
-surface_material_override/2 = SubResource("StandardMaterial3D_i106j")
-surface_material_override/3 = SubResource("StandardMaterial3D_2s3bl")
-surface_material_override/4 = SubResource("StandardMaterial3D_x70gg")
-surface_material_override/5 = SubResource("StandardMaterial3D_dbrov")
-surface_material_override/6 = SubResource("StandardMaterial3D_vcjr6")
-surface_material_override/7 = SubResource("StandardMaterial3D_i8mbl")
-surface_material_override/8 = SubResource("StandardMaterial3D_64gv7")
-surface_material_override/9 = SubResource("StandardMaterial3D_r6m2m")
-surface_material_override/10 = SubResource("StandardMaterial3D_7oejl")
-surface_material_override/11 = SubResource("StandardMaterial3D_ss8v6")
-surface_material_override/12 = SubResource("StandardMaterial3D_a6h0r")
-surface_material_override/13 = SubResource("StandardMaterial3D_aa15j")
-surface_material_override/14 = SubResource("StandardMaterial3D_t0i41")
-surface_material_override/15 = SubResource("StandardMaterial3D_1sygi")
-surface_material_override/16 = SubResource("StandardMaterial3D_v4nq2")
-surface_material_override/17 = SubResource("StandardMaterial3D_0ufjq")
-surface_material_override/18 = SubResource("StandardMaterial3D_ejbxh")
-surface_material_override/19 = SubResource("StandardMaterial3D_d7t44")
-surface_material_override/20 = SubResource("StandardMaterial3D_7khit")
-surface_material_override/21 = SubResource("StandardMaterial3D_878gj")
-surface_material_override/22 = SubResource("StandardMaterial3D_x4rpx")
-surface_material_override/23 = SubResource("StandardMaterial3D_0lt7f")
-surface_material_override/24 = SubResource("StandardMaterial3D_gdxy7")
-surface_material_override/25 = SubResource("StandardMaterial3D_43avk")
-surface_material_override/26 = SubResource("StandardMaterial3D_kfd0b")
-surface_material_override/27 = SubResource("StandardMaterial3D_3u84m")
-surface_material_override/28 = SubResource("StandardMaterial3D_wgnd6")
-surface_material_override/29 = SubResource("StandardMaterial3D_6jp6a")
-surface_material_override/30 = SubResource("StandardMaterial3D_cm8ds")
-surface_material_override/31 = SubResource("StandardMaterial3D_om6v4")
-surface_material_override/32 = SubResource("StandardMaterial3D_2skfm")
-surface_material_override/33 = SubResource("StandardMaterial3D_msiju")
-surface_material_override/34 = SubResource("StandardMaterial3D_g6r7g")
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Maze/CSGBox3D"]
+operation = 2
+radius = 2.85
+material = SubResource("StandardMaterial3D_qk8j3")
 
-[node name="Menu" type="Control" parent="."]
-process_mode = 3
+[node name="Player" parent="." instance=ExtResource("4_kx8hf")]
+
+[node name="Enemy" parent="." instance=ExtResource("7_4rawb")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 52, -2, 0)
+
+[node name="Enemy10" parent="." instance=ExtResource("7_4rawb")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 45.0929, -2, 0)
+
+[node name="Enemy13" parent="." instance=ExtResource("7_4rawb")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 42.726, -2, 0)
+
+[node name="Enemy12" parent="." instance=ExtResource("7_4rawb")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 45.0929, -2, 3.60481)
+
+[node name="Enemy11" parent="." instance=ExtResource("7_4rawb")]
+transform = Transform3D(-4.37114e-09, 0, -0.1, 0, 0.1, 0, 0.1, 0, -4.37114e-09, 55.0316, -2, 0)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Menu" parent="UI" instance=ExtResource("7_qmnlk")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_hj6gj")
 
-[node name="ColorRect" type="ColorRect" parent="Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.192157, 0.192157, 0.192157, 0.501961)
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="Restart" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -20.0
-offset_right = 100.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Restart"
+[node name="music1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_p8r7o")
 
-[node name="Quit" type="Button" parent="Menu"]
-layout_mode = 0
-offset_left = 476.0
-offset_top = 384.0
-offset_right = 676.0
-offset_bottom = 424.0
-text = "Quit"
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 
-[connection signal="pressed" from="Menu/Restart" to="Menu" method="_on_Restart_pressed"]
-[connection signal="pressed" from="Menu/Quit" to="Menu" method="_on_Quit_pressed"]
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="Maze/Exit" to="Maze/Exit" method="_on_Exit_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

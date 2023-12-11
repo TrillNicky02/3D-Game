@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://b82mj5hrb4oib"]
+
+[ext_resource type="Theme" uid="uid://b114jr7tx8ik" path="res://Extract From Others/Title.tres" id="1_hqbel"]
+[ext_resource type="Script" path="res://UI/Thanks_Menu.gd" id="2_7s3xo"]
+[ext_resource type="Shader" path="res://Effects/Main_Menu.gdshader" id="3_qa3fc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvrxk"]
+shader = ExtResource("3_qa3fc")
+shader_parameter/OCTAVE = 6
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.6
+shader_parameter/tide = 0.1
+shader_parameter/foamthickness = 0.1
+shader_parameter/timescale = 1.0
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0, 0, 0, 1)
+shader_parameter/WATER2_COL = Color(0.4, 0.1, 0, 1)
+shader_parameter/FOAM_COL = Color(0.13, 0.1, 0.1, 1)
+
+[node name="Thanks_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 425.0
+offset_top = 123.0
+offset_right = 1577.0
+offset_bottom = 923.0
+theme = ExtResource("1_hqbel")
+script = ExtResource("2_7s3xo")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jvrxk")
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 0.501961)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 178.0
+offset_right = 898.0
+offset_bottom = 288.0
+theme_override_font_sizes/font_size = 60
+text = "Thank You For Playing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -38.0
+offset_right = 234.5
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Please Comeback Soon"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

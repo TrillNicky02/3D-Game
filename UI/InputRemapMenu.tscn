@@ -1,0 +1,132 @@
+[gd_scene load_steps=4 format=3 uid="uid://4scnxvbiilvc"]
+
+[ext_resource type="PackedScene" uid="uid://dfwvmlci11hk5" path="res://UI/ActionRemapButton.tscn" id="1"]
+[ext_resource type="Script" path="res://UI/InputRemapMenu.gd" id="2"]
+
+[sub_resource type="ButtonGroup" id="1"]
+
+[node name="InputRemapMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 2000.0
+offset_bottom = 1000.0
+color = Color(0.321569, 0.270588, 0.0666667, 0.752941)
+
+[node name="Instructions" type="Label" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+text = "Click on a button to reassign its action key."
+
+[node name="RemapButtonGroup" type="Button" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+disabled = true
+flat = true
+
+[node name="ActionsList" type="VBoxContainer" parent="RemapButtonGroup"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Left" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Move Left"
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Left" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 67.0
+group = SubResource("1")
+action = "left"
+
+[node name="Right" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Right"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Move Right"
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Right" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 67.0
+group = SubResource("1")
+action = "right"
+
+[node name="Forward" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Forward"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Forward"
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Forward" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 67.0
+group = SubResource("1")
+action = "forward"
+
+[node name="Back" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Back"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Back"
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Back" instance=ExtResource("1")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 67.0
+group = SubResource("1")
+action = "back"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+text = "Quit"
+
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

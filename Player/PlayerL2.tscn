@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cc24ojwp0x0kt"]
+
+[ext_resource type="Script" path="res://Player/PlayerL2.gd" id="1_47upq"]
+[ext_resource type="PackedScene" uid="uid://d1xexttu58ubo" path="res://Player/Uzi.tscn" id="2_1r1v1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otj25"]
+albedo_color = Color(0.172549, 0.862745, 0.917647, 0.470588)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_buh27"]
+material = SubResource("StandardMaterial3D_otj25")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pjnie"]
+albedo_color = Color(0.933333, 0.509804, 0.933333, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_i3rnm"]
+material = SubResource("StandardMaterial3D_pjnie")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_712aa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hp04"]
+size = Vector3(0.8, 0.2, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k377c"]
+size = Vector3(13.8097, 5.97392, 9.43121)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_do32v"]
+radius = 0.550499
+height = 2.20146
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 1, 0.5)
+script = ExtResource("1_47upq")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_buh27")
+
+[node name="Nose" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, -1.31134e-08, 0.3, 0, -0.3, -1.31134e-08, 0, 1.3, -0.5)
+mesh = SubResource("PrismMesh_i3rnm")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_712aa")
+
+[node name="Feet" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_1hp04")
+
+[node name="Pivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -0.3)
+current = true
+
+[node name="Weapon" type="Node3D" parent="Pivot"]
+
+[node name="Uzi" parent="Pivot/Weapon" instance=ExtResource("2_1r1v1")]
+
+[node name="Overhead" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 30, 0)
+current = true
+
+[node name="Feet_Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.193962, 0.0855742, -0.0431366)
+shape = SubResource("BoxShape3D_k377c")
+
+[node name="Body_Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01945, 0)
+shape = SubResource("CapsuleShape3D_do32v")
